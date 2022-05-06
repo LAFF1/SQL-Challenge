@@ -1,5 +1,4 @@
 config.py
-
-.impy_checkpoints
-
+.ipynb_checkpoints
 .gitignore
+__pycache__
