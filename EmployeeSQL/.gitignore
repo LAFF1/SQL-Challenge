@@ -2,3 +2,4 @@ config.py
 
 .impy_checkpoints
 
+.gitignore
