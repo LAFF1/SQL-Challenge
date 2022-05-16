@@ -7,17 +7,21 @@ Evaluate raw data and establish relationships between files.
 
 ### Model
 
+***** This image needs to be updated  
 First the data was modeled:  
 
 ![QuickDBD-export](https://user-images.githubusercontent.com/98897041/167209671-e83c3a9e-2f49-4449-b817-c6ed7960658a.png)
 
 ### Engineer
 
-Employees and Departments were identified as entity tables, as a result they were given primary keys. 
+All tables were assigned natural primary keys, 
 
-Salaries, Titles and Department_mangager are attribute tables and they were given foreign keys to the entity to which they belong. 
+Employees and Departments were identified as entity tables, as a result they were given primary keys.     
+Dept_emp assigned a compund primary key as emp_no is not unique.  
+Dept_manager assigned compound key as manager(dept_no) is not unique
 
-Dept_emp is a cross reference table and it was assigned foreign keys to the two tables it references. note: this tables containes a column called manager which is dept_id, it was not renamed for this exercise. In practice, this column should be renamed to dept_no to conform with the dataset standards. 
+Employee has a clear foreign key to Titles on emp_no.
+<!-- Dept_emp is a cross reference table and it was assigned foreign keys to the two tables it references. note: this tables containes a column called manager which is dept_id, it was not renamed for this exercise. In practice, this column should be renamed to dept_no to conform with the dataset standards.  -->
 
 Create the database and populate with data from the .csv files. Tables definition scirpt can be found DBTables.sql.
 
