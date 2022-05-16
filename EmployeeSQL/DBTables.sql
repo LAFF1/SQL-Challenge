@@ -1,49 +1,77 @@
-drop table if exists Titles;
-create table Titles(
-	emp_title_id varchar(10) not null Primary key,
-	title varchar(20) not null
+﻿-- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
+-- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
+
+-- DB schema diagram.
+-- EmployeesSQL Challenge
+
+CREATE TABLE "Employees" (
+    "emp_no" int   NOT NULL,
+    "emp_title_id" varchar(10)   NOT NULL,
+    "birth_data" date   NOT NULL,
+    "first_name" varchar(20)   NOT NULL,
+    "last_name" (20)   NOT NULL,
+    "sex" varchar(2)   NOT NULL,
+    "hiredate" date   NOT NULL,
+    CONSTRAINT "pk_Employees" PRIMARY KEY (
+        "emp_no"
+     )
 );
 
-Select * from Titles as T
-
-drop table if exists Employees;
-create table Employees(
-	emp_no int Primary Key,
-	emp_title_id varchar(10) not null,
-	Foreign Key (emp_title_id) References Titles(emp_title_id),
-	birth_date date,
-	first_name varchar(20) not null,
-	last_name varchar(20) not null,
-	sex varchar(2) not null,
-	hiredate date
+CREATE TABLE "Titles" (
+    "emp_title_id" varchar(10)   NOT NULL,
+    "title" varchar(20)   NOT NULL,
+    CONSTRAINT "pk_Titles" PRIMARY KEY (
+        "emp_title_id"
+     )
 );
 
-Select * from Employees as E
-
-drop table if exists Salary;
-create table Salary(
-	emp_no int,
-	salary money
+CREATE TABLE "Salaries" (
+    "emp_no" int   NOT NULL,
+    "Salary" money   NOT NULL,
+    CONSTRAINT "pk_Salaries" PRIMARY KEY (
+        "emp_no"
+     )
 );
-Select * from Salary as S
 
-drop table if exists Dept_emp;
-create table Dept_emp(
-	emp_no int,
-	dept_no varchar(10)
+CREATE TABLE "Dept_emp" (
+    "emp_no" int   NOT NULL,
+    "dept_no" string   NOT NULL,
+    CONSTRAINT "pk_Dept_emp" PRIMARY KEY (
+        "emp_no"
+     )
 );
-Select * from Dept_emp as DE
 
-drop table if exists Department;
-create table Department(
-	dept_no varchar(10) Primary Key, 
-	dept_name varchar(20)
+CREATE TABLE "Departments" (
+    "dept_no" varchar(10)   NOT NULL,
+    "dept_name" varchar(20)   NOT NULL,
+    CONSTRAINT "pk_Departments" PRIMARY KEY (
+        "dept_no"
+     )
 );
-Select * from Department as D
 
-drop table if exists Dept_manager;
-create table Dept_manager(
-	manager varchar(10), 
-	emp_no int
+CREATE TABLE "Dept_manager" (
+    "manager" varchar(20)   NOT NULL,
+    "emp_no" int   NOT NULL,
+    CONSTRAINT "pk_Dept_manager" PRIMARY KEY (
+        "manager"
+     )
 );
-Select * from Dept_manager as DM
+
+ALTER TABLE "Employees" ADD CONSTRAINT "fk_Employees_emp_title_id" FOREIGN KEY("emp_title_id")
+REFERENCES "Titles" ("emp_title_id");
+
+ALTER TABLE "Salaries" ADD CONSTRAINT "fk_Salaries_emp_no" FOREIGN KEY("emp_no")
+REFERENCES "Employees" ("emp_no");
+
+ALTER TABLE "Dept_emp" ADD CONSTRAINT "fk_Dept_emp_emp_no" FOREIGN KEY("emp_no")
+REFERENCES "Employees" ("emp_no");
+
+ALTER TABLE "Dept_emp" ADD CONSTRAINT "fk_Dept_emp_dept_no" FOREIGN KEY("dept_no")
+REFERENCES "Departments" ("dept_no");
+
+ALTER TABLE "Dept_manager" ADD CONSTRAINT "fk_Dept_manager_manager" FOREIGN KEY("manager")
+REFERENCES "Departments" ("dept_no");
+
+ALTER TABLE "Dept_manager" ADD CONSTRAINT "fk_Dept_manager_emp_no" FOREIGN KEY("emp_no")
+REFERENCES "Employees" ("emp_no");
+
