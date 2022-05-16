@@ -7,10 +7,9 @@ Evaluate raw data and establish relationships between files.
 
 ### Model
 
-***** This image needs to be updated  
 First the data was modeled:  
 
-![QuickDBD-export](https://user-images.githubusercontent.com/98897041/167209671-e83c3a9e-2f49-4449-b817-c6ed7960658a.png)
+![ERDPHEmpDB](https://user-images.githubusercontent.com/98897041/168600570-9383d8fa-df14-4ebb-9e94-1ecded7f2911.PNG)
 
 ### Engineer
 
